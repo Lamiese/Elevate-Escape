@@ -1,0 +1,302 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Meet The Team — Elevate & Escape</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --ink:#2D2B27;
+    --ink-2:#2BB6DE;
+    --bone:#FBF9F5;
+    --bone-2:#F1ECE2;
+    --brass:#2BB6DE;
+    --brass-light:#FF8FAE;
+    --terracotta:#2BB6DE;
+    --turquoise-light:#F1ECE2;
+    --sun:#F1ECE2;
+    --peach-light:#F1ECE2;
+    --coral:#F1ECE2;
+    --peach:#FF8FAE;
+    --text-light:#FBF9F5;
+    --text-dark:#2D2B27;
+    --text-dark-dim:#75716A;
+    --line-dark:rgba(45,43,39,0.13);
+    --radius:2px;
+  }
+  *{margin:0;padding:0;box-sizing:border-box;}
+  body{font-family:'Inter',sans-serif;background:var(--bone);color:var(--text-dark);line-height:1.5;}
+  h1,h2,h3{font-family:'Fraunces',serif;font-weight:600;}
+  a{text-decoration:none;color:inherit;}
+  .wrap{max-width:1240px;margin:0 auto;padding:0 32px;}
+  .eyebrow{font-size:12px;font-weight:600;letter-spacing:0.16em;text-transform:uppercase;}
+  section{padding:100px 0;}
+
+  /* ===== NAV ===== */
+  #nav{position:fixed;top:0;left:0;right:0;z-index:50;background:rgba(251,249,245,0.97);backdrop-filter:blur(10px);border-bottom:1px solid var(--line-dark);}
+  #nav .wrap{display:flex;align-items:center;justify-content:space-between;height:84px;}
+  .logo{font-family:'Fraunces',serif;font-weight:600;font-size:19px;letter-spacing:0.04em;}
+  .logo span{color:var(--brass-light);}
+  .nav-links{display:flex;align-items:center;gap:34px;}
+  .nav-links a{font-size:14.5px;font-weight:500;color:var(--text-dark-dim);transition:color .2s ease;}
+  .nav-links a:hover{color:var(--text-dark);}
+  .nav-links a.current{color:var(--text-dark);}
+  .nav-cta{background:var(--brass);color:var(--text-light) !important;padding:11px 22px;border-radius:var(--radius);font-weight:600;}
+  .nav-cta:hover{background:var(--brass-light);color:var(--text-dark) !important;}
+  .nav-toggle{display:none;background:none;border:none;font-size:24px;cursor:pointer;color:var(--text-dark);}
+  @media (max-width:680px){
+    .nav-links{position:fixed;top:0;right:0;height:100vh;width:78%;background:var(--bone);box-shadow:-4px 0 30px rgba(27,32,66,0.12);
+      flex-direction:column;justify-content:center;align-items:flex-start;padding:0 36px;
+      transform:translateX(100%);transition:transform .35s ease;gap:26px;}
+    .nav-links.open{transform:translateX(0);}
+    .nav-links a{color:var(--text-dark-dim) !important;}
+    .nav-links a:hover{color:var(--text-dark) !important;}
+    .nav-toggle{display:block;}
+    section{padding:70px 0;}
+  }
+
+  /* ===== PAGE HEADER ===== */
+  #team-hero{padding:160px 0 70px;text-align:center;background:var(--bone);position:relative;overflow:hidden;}
+  .team-hero-deco{
+    position:absolute;top:-5%;left:50%;transform:translateX(-50%);width:54%;height:115%;z-index:0;
+    object-fit:cover;opacity:0.4;pointer-events:none;
+    -webkit-mask-image:radial-gradient(ellipse 60% 60% at 50% 45%, black 25%, transparent 78%);
+    mask-image:radial-gradient(ellipse 60% 60% at 50% 45%, black 25%, transparent 78%);
+  }
+  #team-hero .wrap{position:relative;z-index:1;}
+  #team-hero .eyebrow{color:var(--ink-2);margin-bottom:16px;}
+  #team-hero h1{font-size:clamp(34px,5vw,54px);line-height:1.1;margin:0 auto 18px;max-width:780px;}
+  #team-hero p{color:var(--text-dark-dim);font-size:17px;max-width:560px;margin:0 auto;}
+
+  /* ===== TEAM GRID ===== */
+  #team-grid{
+    padding:30px 0 110px;position:relative;
+    background:
+      radial-gradient(ellipse 55% 45% at 8% 10%, rgba(43,182,222,0.16), transparent 70%),
+      radial-gradient(ellipse 50% 45% at 95% 30%, rgba(255,143,174,0.16), transparent 70%),
+      radial-gradient(ellipse 55% 50% at 15% 85%, rgba(255,143,174,0.13), transparent 70%),
+      radial-gradient(ellipse 55% 50% at 90% 95%, rgba(43,182,222,0.14), transparent 70%),
+      var(--bone);
+  }
+  .team-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:46px 36px;}
+  .t-card{display:flex;flex-direction:column;}
+  .t-photo-wrap{position:relative;margin-bottom:22px;aspect-ratio:4/5;border-radius:14px;overflow:hidden;box-shadow:0 24px 44px -18px rgba(45,43,39,0.22);}
+  .t-photo-wrap img{
+    width:100%;height:100%;object-fit:cover;display:block;
+  }
+  .t-card.tilt .t-photo-wrap{transform:rotate(-3deg);box-shadow:0 24px 44px -18px rgba(255,143,174,0.45);}
+  .t-card.tilt-r .t-photo-wrap{transform:rotate(3deg);box-shadow:0 24px 44px -18px rgba(43,182,222,0.4);}
+  .t-name{font-family:'Fraunces',serif;font-weight:600;font-size:20px;margin-bottom:2px;}
+  .t-loc{color:var(--text-dark-dim);font-size:13px;margin-bottom:14px;}
+  .t-bio{color:var(--text-dark-dim);font-size:15px;line-height:1.6;margin-bottom:18px;flex-grow:1;}
+  .t-ig{
+    display:inline-flex;align-items:center;gap:6px;
+    font-size:13px;font-weight:600;color:var(--ink-2);
+    border:1px solid var(--line-dark);border-radius:30px;padding:9px 18px;
+    align-self:flex-start;transition:border-color .2s ease, background .2s ease;
+  }
+  .t-ig:hover{border-color:var(--ink-2);background:rgba(43,182,222,0.06);}
+  @media (max-width:900px){
+    .team-grid{grid-template-columns:repeat(2,1fr);}
+  }
+  @media (max-width:600px){
+    .team-grid{grid-template-columns:1fr;gap:50px;}
+    #team-hero{padding:120px 0 50px;}
+  }
+
+  /* ===== CTA ===== */
+  #team-cta{background:var(--bone-2);padding:90px 0;text-align:center;position:relative;overflow:hidden;}
+  .team-cta-deco{
+    position:absolute;top:-10%;right:-6%;width:38%;height:120%;z-index:0;
+    object-fit:cover;opacity:0.45;pointer-events:none;
+    -webkit-mask-image:radial-gradient(ellipse 60% 60% at 50% 50%, black 25%, transparent 78%);
+    mask-image:radial-gradient(ellipse 60% 60% at 50% 50%, black 25%, transparent 78%);
+  }
+  #team-cta .wrap{position:relative;z-index:1;}
+  #team-cta h2{font-size:clamp(26px,3.6vw,36px);margin-bottom:16px;}
+  #team-cta p{color:var(--text-dark-dim);font-size:16px;margin-bottom:28px;max-width:480px;margin-left:auto;margin-right:auto;}
+  .btn-primary{
+    background:var(--brass);color:var(--text-light);padding:16px 32px;font-size:14px;font-weight:600;
+    letter-spacing:0.02em;border-radius:var(--radius);display:inline-block;transition:background .2s ease, transform .2s ease;
+  }
+  .btn-primary:hover{background:var(--brass-light);color:var(--text-dark);transform:translateY(-1px);}
+
+  /* ===== FOOTER ===== */
+  footer{background:var(--ink);padding:50px 0;}
+  footer .wrap{display:flex;flex-direction:column;align-items:center;gap:18px;text-align:center;}
+  footer .logo{color:var(--text-light);}
+  footer .logo span{color:var(--brass-light);}
+  .f-links{display:flex;gap:26px;}
+  .f-links a{color:rgba(251,249,245,0.7);font-size:14px;}
+  .f-links a:hover{color:var(--text-light);}
+  .copyright{color:rgba(251,249,245,0.45);font-size:13px;}
+</style>
+</head>
+<body>
+
+<nav id="nav">
+  <div class="wrap">
+    <a href="index.html#hero" class="logo">ELEVATE <span>&</span> ESCAPE</a>
+    <div class="nav-links" id="navLinks">
+      <a href="index.html#intro">How It Works</a>
+      <a href="team.html" class="current">Meet The Team</a>
+      <a href="index.html#faq">FAQ</a>
+      <a href="index.html#apply" class="nav-cta">Get Started</a>
+    </div>
+    <button class="nav-toggle" id="navToggle" aria-label="Open menu">☰</button>
+  </div>
+</nav>
+
+<section id="team-hero">
+  <img class="team-hero-deco" src="assets/lux-surfboards.jpg" alt="">
+  <div class="wrap">
+    <p class="eyebrow">THE PEOPLE BEHIND IT</p>
+    <h1>Meet the women already doing this.</h1>
+    <p>Teachers, nurses, mums, founders, a married couple. Different lives, same reason for joining: they wanted more control over their time and their travel. Here's a few of them, in their own words.</p>
+  </div>
+</section>
+
+<section id="team-grid">
+  <div class="wrap">
+    <div class="team-grid">
+
+      <div class="t-card tilt">
+        <div class="t-photo-wrap"><img src="assets/team/lamiese.jpg" alt="Lamiese H"></div>
+        <p class="t-name">Lamiese H</p>
+        <p class="t-loc">Founder · South London / Essex</p>
+        <p class="t-bio">I joined a year ago to save on my own holidays and build passive income. So far I've saved £2,500 on my summer holiday and saved enough through referrals to take two months off and spend it with my family. My goal is to retire within two years and help as many people do the same.</p>
+        <a href="https://www.instagram.com/lamiese_h/" target="_blank" class="t-ig">Lamiese's Instagram →</a>
+      </div>
+
+      <div class="t-card">
+        <div class="t-photo-wrap"><img src="assets/team/laura_k.jpg" alt="Laura K"></div>
+        <p class="t-name">Laura K</p>
+        <p class="t-loc">Yorkshire</p>
+        <p class="t-bio">I joined to save on my own travel, enjoy more adventures with my family, and build the freedom to retire earlier. So far I've saved over £4,500 on personal travel, booked more than £35,000 of holidays for clients, and built a team of 17 amazing people.</p>
+        <a href="#" class="t-ig">Laura's Instagram →</a>
+      </div>
+
+      <div class="t-card">
+        <div class="t-photo-wrap"><img src="assets/team/lorell.jpg" alt="Lorell W"></div>
+        <p class="t-name">Lorell W</p>
+        <p class="t-loc">Wales</p>
+        <p class="t-bio">I joined to save on my own travel, but really I wanted a plan B after leaving my corporate job of 8 years, something flexible around my kids. I've since saved over £3,000 on my own holidays and started building a team for residual income and real freedom.</p>
+        <a href="#" class="t-ig">Lorell's Instagram →</a>
+      </div>
+
+      <div class="t-card tilt-r">
+        <div class="t-photo-wrap"><img src="assets/team/chelsie.jpg" alt="Chelsie J"></div>
+        <p class="t-name">Chelsie J</p>
+        <p class="t-loc">Liverpool · Primary School Teacher</p>
+        <p class="t-bio">I'm obsessed with holidays and staycations, so saving on my own travel was the hook. I crave time freedom and financial stability, and I love that I can build this around my job. Since joining I've saved loads on travel and grown so much in confidence.</p>
+        <a href="#" class="t-ig">Chelsie's Instagram →</a>
+      </div>
+
+      <div class="t-card">
+        <div class="t-photo-wrap"><img src="assets/team/charlotte.jpg" alt="Charlotte M"></div>
+        <p class="t-name">Charlotte M</p>
+        <p class="t-loc">Cotswolds · Primary School Teacher</p>
+        <p class="t-bio">I originally joined to save money on my own adventures, but it quickly offered so much more. Being part of this community opened my eyes to what's truly possible, and I'm now building a flexible business around my busy teaching schedule.</p>
+        <a href="https://www.instagram.com/miss_charlotte_travels" target="_blank" class="t-ig">Charlotte's Instagram →</a>
+      </div>
+
+      <div class="t-card tilt">
+        <div class="t-photo-wrap"><img src="assets/team/natalie.jpg" alt="Natalie"></div>
+        <p class="t-name">Natalie</p>
+        <p class="t-loc">West Yorkshire · NHS Nurse</p>
+        <p class="t-bio">I joined in December 2025 to build a second income for me and my son. Working as a nurse, I want to avoid burnout and knock a few years off retirement, and make memories with my boy visiting amazing places along the way.</p>
+        <a href="https://www.instagram.com/nat_rachel88" target="_blank" class="t-ig">Natalie's Instagram →</a>
+      </div>
+
+      <div class="t-card">
+        <div class="t-photo-wrap"><img src="assets/team/jenna.jpg" alt="Jenna T"></div>
+        <p class="t-name">Jenna T</p>
+        <p class="t-loc">Surrey / Essex</p>
+        <p class="t-bio">After 10+ years in corporate, I joined for the potential and freedom it can create, more time for myself and my children, less time chained to a desk. I love travelling and I'm excited to grow a team and help others build the lifestyle they want.</p>
+        <a href="https://www.instagram.com/jengloss85" target="_blank" class="t-ig">Jenna's Instagram →</a>
+      </div>
+
+      <div class="t-card tilt-r">
+        <div class="t-photo-wrap"><img src="assets/team/emma.jpg" alt="Emma R"></div>
+        <p class="t-name">Emma R</p>
+        <p class="t-loc">Walsall, West Midlands</p>
+        <p class="t-bio">I've always loved planning holidays and finding the stays that make a trip unforgettable. What started as a way to save on my own travel is growing into a real passion for helping others do the same, alongside my career in education.</p>
+        <a href="https://www.instagram.com/elrtravelservices" target="_blank" class="t-ig">Emma's Instagram →</a>
+      </div>
+
+      <div class="t-card">
+        <div class="t-photo-wrap"><img src="assets/team/hayley.jpg" alt="Hayley G"></div>
+        <p class="t-name">Hayley G</p>
+        <p class="t-loc">South London / Surrey</p>
+        <p class="t-bio">I've worked in aesthetics for 9 years, the last 6 for myself, and I love my clients, but it means trading time for money. I started this because I love to travel and love luxury, and being able to earn on bookings for myself and others felt like a no-brainer.</p>
+        <a href="https://www.instagram.com/haygoertz" target="_blank" class="t-ig">Hayley's Instagram →</a>
+      </div>
+
+      <div class="t-card">
+        <div class="t-photo-wrap"><img src="assets/team/nicola_keith.jpg" alt="Nicola and Keith L"></div>
+        <p class="t-name">Nicola & Keith L</p>
+        <p class="t-loc">Northamptonshire</p>
+        <p class="t-bio">We initially joined to save on our own trips. Along the way we realised how many friends and family wanted our travel tips, that's when Langford Escapes was born. Save on holidays, earn from your travel knowledge, or build a team, you can focus on one or embrace all three.</p>
+        <a href="#" class="t-ig">Nicola & Keith's Instagram →</a>
+      </div>
+
+      <div class="t-card tilt">
+        <div class="t-photo-wrap"><img src="assets/team/laura_s.jpg" alt="Laura S"></div>
+        <p class="t-name">Laura S</p>
+        <p class="t-loc">London</p>
+        <p class="t-bio">I joined when I was 6 months pregnant, wanting to save on my family's travel and build a legacy income for my child. I've since saved over £3,000 on my own travel, booked holidays for clients that saved them money and time, and built amazing friendships along the way.</p>
+        <a href="https://www.instagram.com/luxetravelswithlaura" target="_blank" class="t-ig">Laura's Instagram →</a>
+      </div>
+
+      <div class="t-card">
+        <div class="t-photo-wrap"><img src="assets/team/nikki.jpg" alt="Nikki M"></div>
+        <p class="t-name">Nikki M</p>
+        <p class="t-loc"></p>
+        <p class="t-bio">I joined to fuel my love for exploring while saving money on my own trips. What I didn't expect was discovering I could help others do the same, building unforgettable adventures and a passive income along the way. The community here is genuinely uplifting.</p>
+        <a href="#" class="t-ig">Nikki's Instagram →</a>
+      </div>
+
+      <div class="t-card tilt-r">
+        <div class="t-photo-wrap"><img src="assets/team/lizzi.jpg" alt="Lizzi D"></div>
+        <p class="t-name">Lizzi D</p>
+        <p class="t-loc">Full-Time Facialist</p>
+        <p class="t-bio">I joined to earn extra income for me and my family and build a team for the future. I've already learnt so much and I'm excited to see where this business takes me.</p>
+        <a href="https://www.instagram.com/itslizzidunnette" target="_blank" class="t-ig">Lizzi's Instagram →</a>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<section id="team-cta">
+  <img class="team-cta-deco" src="assets/lux-pink-umbrellas.jpg" alt="">
+  <div class="wrap">
+    <h2>Think you'd fit in here?</h2>
+    <p>This is what the team actually looks like. If you like what you see, let's talk about whether it's a fit for you too.</p>
+    <a href="index.html#apply" class="btn-primary">Show Me How It Works</a>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <a href="index.html#hero" class="logo">ELEVATE <span>&</span> ESCAPE</a>
+    <div class="f-links">
+      <a href="#">Instagram</a>
+      <a href="#">Privacy Policy</a>
+    </div>
+    <p class="copyright">© 2026 Elevate & Escape. All rights reserved.</p>
+  </div>
+</footer>
+
+<script>
+  const navToggle = document.getElementById('navToggle');
+  const navLinks = document.getElementById('navLinks');
+  navToggle.addEventListener('click', () => navLinks.classList.toggle('open'));
+  navLinks.querySelectorAll('a').forEach(a => a.addEventListener('click', () => navLinks.classList.remove('open')));
+</script>
+
+</body>
+</html>
