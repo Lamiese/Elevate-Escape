@@ -465,13 +465,18 @@
   footer .copyright{color:var(--text-dark-dim);opacity:0.7;font-size:12px;width:100%;margin-top:26px;padding-top:26px;border-top:1px solid var(--line-dark);}
 
   /* ===== RESPONSIVE ===== */
-  @media (max-width:900px){
+@media (max-width:900px){
     .intro-grid,.apply-grid{grid-template-columns:1fr;gap:40px;}
     .hero-grid{grid-template-columns:1fr;gap:60px;}
     .hero-collage{height:420px;order:-1;}
     .benefits-grid{grid-template-columns:repeat(2,1fr);}
     .photo-grid{grid-template-columns:repeat(2,1fr);grid-auto-rows:200px;}
     .span-2{grid-column:span 2;}
+    .intro-deco,.faq-deco,.apply-deco{opacity:0.18;}
+    .apply-copy h2,.apply-copy p,.apply-list div,
+    .intro-grid h2,.intro-grid p,
+    .faq-list summary,.faq-item .a{text-shadow:0 1px 12px var(--bone);}
+  }
   }
   @media (max-width:680px){
     .nav-links{position:fixed;top:0;right:0;height:100vh;width:78%;background:var(--bone);box-shadow:-4px 0 30px rgba(27,32,66,0.12);
