@@ -1,0 +1,1585 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Your Getting Started Guide</title>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --cream: #FFFFFF;
+    --cream-dark: #FAFAF8;
+    --gold: #2BB6DE;
+    --gold-light: #FF8FAE;
+    --gold-dark: #1E93B4;
+    --nude: #FF8FAE;
+    --brown: #FF8FAE;
+    --text: #2D2B27;
+    --text-light: #75716A;
+    --white: #FFFFFF;
+    --panel: #FFFFFF;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    font-family: 'Inter', sans-serif;
+    background: var(--cream);
+    color: var(--text);
+    min-height: 100vh;
+  }
+
+  /* PASSWORD GATE */
+  #password-gate {
+    position: fixed;
+    inset: 0;
+    background: var(--cream);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 9999;
+    padding: 24px;
+  }
+
+  .password-box {
+    background: var(--white);
+    border: 1px solid rgba(45,43,39,0.15);
+    padding: 56px 48px;
+    text-align: center;
+    max-width: 420px;
+    width: 100%;
+  }
+
+  .password-box .ornament {
+    font-size: 28px;
+    margin-bottom: 20px;
+    color: var(--gold);
+  }
+
+  .password-box h2 {
+    font-family: 'Fraunces', serif;
+    font-size: 36px;
+    font-weight: 500;
+    color: var(--text);
+    margin-bottom: 8px;
+  }
+
+  .password-box p {
+    font-size: 13px;
+    color: var(--text-light);
+    margin-bottom: 32px;
+    font-weight: 400;
+    letter-spacing: 0.05em;
+  }
+
+  .password-input {
+    width: 100%;
+    padding: 16px 20px;
+    background: var(--cream);
+    border: 1px solid rgba(45,43,39,0.2);
+    color: var(--text);
+    font-family: 'Inter', sans-serif;
+    font-size: 15px;
+    font-weight: 400;
+    letter-spacing: 0.1em;
+    text-align: center;
+    outline: none;
+    transition: border-color 0.2s;
+    margin-bottom: 16px;
+  }
+
+  .password-input::placeholder {
+    color: var(--text-light);
+    letter-spacing: 0.05em;
+  }
+
+  .password-input:focus {
+    border-color: var(--gold);
+  }
+
+  .password-submit {
+    width: 100%;
+    padding: 16px;
+    background: var(--gold);
+    border: none;
+    color: var(--white);
+    font-family: 'Inter', sans-serif;
+    font-size: 12px;
+    font-weight: 600;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    cursor: pointer;
+    transition: all 0.2s;
+  }
+
+  .password-submit:hover {
+    background: var(--gold-dark);
+  }
+
+  .password-error {
+    color: #E8A0A0;
+    font-size: 13px;
+    margin-top: 12px;
+    display: none;
+    font-weight: 300;
+  }
+
+  #main-content { display: none; }
+
+  /* HERO */
+  .hero {
+    background: var(--cream);
+    padding: 80px 40px 100px;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+    border-bottom: 1px solid rgba(45,43,39,0.1);
+  }
+
+  .hero-ornament {
+    font-size: 32px;
+    margin-bottom: 24px;
+    color: var(--gold);
+  }
+
+  .hero h1 {
+    font-family: 'Fraunces', serif;
+    font-size: clamp(42px, 7vw, 72px);
+    font-weight: 600;
+    color: var(--text);
+    letter-spacing: -0.01em;
+    line-height: 1.1;
+    margin-bottom: 24px;
+    position: relative;
+  }
+
+  .hero h1 span {
+    color: var(--gold-light);
+    font-style: italic;
+  }
+
+  .hero-line {
+    width: 60px;
+    height: 2px;
+    background: var(--gold);
+    margin: 0 auto 24px;
+  }
+
+  .hero p {
+    font-size: 16px;
+    font-weight: 400;
+    color: var(--text-light);
+    max-width: 500px;
+    margin: 0 auto;
+    line-height: 1.8;
+    letter-spacing: 0.01em;
+  }
+
+  /* PATH SECTION */
+  .paths {
+    padding: 80px 40px;
+    max-width: 900px;
+    margin: 0 auto;
+    text-align: center;
+  }
+
+  .section-label {
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--gold-dark);
+    margin-bottom: 16px;
+  }
+
+  .paths h2 {
+    font-family: 'Fraunces', serif;
+    font-size: clamp(28px, 4vw, 40px);
+    font-weight: 400;
+    color: var(--text);
+    margin-bottom: 48px;
+  }
+
+  .path-cards {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 24px;
+  }
+
+  .path-card {
+    background: var(--panel);
+    border: 1px solid rgba(45,43,39,0.15);
+    border-radius: 2px;
+    padding: 48px 36px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    text-decoration: none;
+    color: inherit;
+    display: block;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .path-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 3px;
+    background: var(--gold);
+    transform: scaleX(0);
+    transition: transform 0.3s ease;
+  }
+
+  .path-card:hover::before { transform: scaleX(1); }
+
+  .path-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 20px 60px rgba(45,43,39,0.12);
+    border-color: var(--gold);
+  }
+
+  .path-icon {
+    font-size: 36px;
+    margin-bottom: 20px;
+    display: block;
+  }
+
+  .path-card h3 {
+    font-family: 'Fraunces', serif;
+    font-size: 26px;
+    font-weight: 500;
+    margin-bottom: 12px;
+    color: var(--text);
+  }
+
+  .path-card p {
+    font-size: 14px;
+    color: var(--text-light);
+    line-height: 1.7;
+    font-weight: 300;
+  }
+
+  .path-arrow {
+    margin-top: 24px;
+    display: inline-block;
+    font-size: 13px;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--gold-dark);
+    font-weight: 500;
+  }
+
+  /* PAGE SECTIONS */
+  .page-section {
+    display: none;
+    animation: fadeIn 0.4s ease;
+  }
+
+  .page-section.active { display: block; }
+
+  @keyframes fadeIn {
+    from { opacity: 0; transform: translateY(16px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  /* BACK BUTTON */
+  .back-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 12px 24px;
+    background: transparent;
+    border: 1px solid var(--gold);
+    color: var(--gold-dark);
+    font-family: 'Inter', sans-serif;
+    font-size: 12px;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    cursor: pointer;
+    transition: all 0.2s;
+    margin: 40px 40px 0;
+  }
+
+  .back-btn:hover {
+    background: var(--gold);
+    color: var(--white);
+  }
+
+  /* CONTENT AREA */
+  .content {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 60px 40px;
+  }
+
+  .content-header {
+    margin-bottom: 60px;
+    padding-bottom: 40px;
+    border-bottom: 1px solid rgba(45,43,39,0.3);
+  }
+
+  .content-header h2 {
+    font-family: 'Fraunces', serif;
+    font-size: clamp(36px, 5vw, 54px);
+    font-weight: 400;
+    color: var(--text);
+    margin-bottom: 16px;
+  }
+
+  .content-header p {
+    font-size: 15px;
+    color: var(--text-light);
+    line-height: 1.8;
+    font-weight: 300;
+  }
+
+  /* STEP BLOCKS */
+  .step {
+    margin-bottom: 48px;
+    padding-bottom: 48px;
+    border-bottom: 1px solid rgba(45,43,39,0.2);
+  }
+
+  .step:last-child { border-bottom: none; }
+
+  .step-number {
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 8px;
+  }
+
+  .step h3 {
+    font-family: 'Fraunces', serif;
+    font-size: 28px;
+    font-weight: 500;
+    color: var(--text);
+    margin-bottom: 20px;
+  }
+
+  .step p {
+    font-size: 15px;
+    color: var(--text-light);
+    line-height: 1.9;
+    font-weight: 300;
+    margin-bottom: 16px;
+  }
+
+  /* CALLOUT */
+  .callout {
+    background: var(--cream-dark);
+    border-left: 3px solid var(--gold);
+    padding: 24px 28px;
+    margin: 24px 0;
+    border-radius: 0 2px 2px 0;
+  }
+
+  .callout p {
+    margin: 0;
+    font-size: 14px;
+    color: var(--text);
+  }
+
+  .callout strong {
+    color: var(--gold-dark);
+    font-weight: 500;
+  }
+
+  /* CREDENTIALS BOX */
+  .credentials {
+    background: var(--panel);
+    border: 1px solid rgba(45,43,39,0.18);
+    padding: 28px 32px;
+    margin: 24px 0;
+  }
+
+  .credentials h4 {
+    font-family: 'Fraunces', serif;
+    font-size: 18px;
+    font-weight: 500;
+    color: var(--text);
+    margin-bottom: 16px;
+    padding-bottom: 12px;
+    border-bottom: 1px solid rgba(45,43,39,0.2);
+  }
+
+  .credential-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 0;
+    border-bottom: 1px solid rgba(45,43,39,0.1);
+    font-size: 14px;
+  }
+
+  .credential-item:last-child { border-bottom: none; }
+
+  .credential-label {
+    color: var(--text-light);
+    font-weight: 300;
+  }
+
+  .credential-value {
+    color: var(--text);
+    font-weight: 500;
+    letter-spacing: 0.03em;
+  }
+
+  /* TOGGLE */
+  .toggle {
+    margin: 12px 0;
+  }
+
+  .toggle-header {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 16px 20px;
+    background: var(--panel);
+    border: 1px solid rgba(45,43,39,0.18);
+    cursor: pointer;
+    transition: all 0.2s;
+    user-select: none;
+  }
+
+  .toggle-header:hover {
+    border-color: var(--gold);
+    background: var(--cream-dark);
+  }
+
+  .toggle-icon {
+    font-size: 12px;
+    color: var(--gold);
+    transition: transform 0.2s;
+    flex-shrink: 0;
+  }
+
+  .toggle-header.open .toggle-icon { transform: rotate(90deg); }
+
+  .toggle-title {
+    font-size: 14px;
+    font-weight: 500;
+    color: var(--text);
+    letter-spacing: 0.02em;
+  }
+
+  .toggle-body {
+    display: none;
+    padding: 24px;
+    background: var(--cream-dark);
+    border: 1px solid rgba(45,43,39,0.18);
+    border-top: none;
+    font-size: 14px;
+    line-height: 1.9;
+    color: var(--text-light);
+  }
+
+  .toggle-body.open { display: block; }
+
+  .toggle-body p { margin-bottom: 12px; }
+  .toggle-body p:last-child { margin-bottom: 0; }
+
+  /* BULLET LIST */
+  .bullet-list {
+    list-style: none;
+    margin: 16px 0;
+  }
+
+  .bullet-list li {
+    padding: 8px 0 8px 24px;
+    position: relative;
+    font-size: 14px;
+    color: var(--text-light);
+    line-height: 1.7;
+    border-bottom: 1px solid rgba(45,43,39,0.1);
+  }
+
+  .bullet-list li:last-child { border-bottom: none; }
+
+  .bullet-list li::before {
+    content: '—';
+    position: absolute;
+    left: 0;
+    color: var(--gold);
+    font-weight: 300;
+  }
+
+  /* NUMBERED LIST */
+  .numbered-list {
+    list-style: none;
+    counter-reset: steps;
+    margin: 16px 0;
+  }
+
+  .numbered-list li {
+    counter-increment: steps;
+    padding: 12px 0 12px 44px;
+    position: relative;
+    font-size: 14px;
+    color: var(--text-light);
+    line-height: 1.7;
+    border-bottom: 1px solid rgba(45,43,39,0.1);
+  }
+
+  .numbered-list li:last-child { border-bottom: none; }
+
+  .numbered-list li::before {
+    content: counter(steps);
+    position: absolute;
+    left: 0;
+    width: 28px;
+    height: 28px;
+    background: var(--gold);
+    color: var(--white);
+    font-size: 11px;
+    font-weight: 500;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    top: 12px;
+  }
+
+  /* EMAIL TEMPLATE */
+  .email-template {
+    background: var(--cream-dark);
+    border: 1px solid rgba(45,43,39,0.15);
+    border-top: 3px solid var(--gold);
+    padding: 28px 32px;
+    margin: 20px 0;
+    font-size: 14px;
+    line-height: 1.9;
+    color: var(--text);
+    font-style: italic;
+  }
+
+  /* LINK BUTTON */
+  .link-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 14px 28px;
+    background: var(--gold);
+    color: var(--white);
+    text-decoration: none;
+    font-size: 12px;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    font-weight: 600;
+    transition: all 0.2s;
+    margin: 8px 0;
+    font-family: 'Inter', sans-serif;
+  }
+
+  .link-btn:hover {
+    background: var(--gold-dark);
+    transform: translateY(-1px);
+  }
+
+  .link-btn-outline {
+    background: transparent;
+    border: 1px solid rgba(45,43,39,0.25);
+    color: var(--text);
+  }
+
+  .link-btn-outline:hover {
+    background: var(--text);
+    border-color: var(--text);
+    color: var(--white);
+  }
+
+  /* WARNING BOX */
+  .warning {
+    background: var(--cream-dark);
+    border: 1px solid rgba(45,43,39,0.15);
+    border-left: 3px solid var(--gold-light);
+    padding: 20px 24px;
+    margin: 20px 0;
+    font-size: 14px;
+    line-height: 1.8;
+    color: var(--text);
+  }
+
+  .warning strong { color: var(--gold-dark); }
+
+  /* CHECKLIST */
+  .checklist {
+    list-style: none;
+    margin: 16px 0;
+  }
+
+  .checklist li {
+    padding: 14px 0 14px 36px;
+    position: relative;
+    font-size: 14px;
+    color: var(--text-light);
+    line-height: 1.7;
+    border-bottom: 1px solid rgba(45,43,39,0.15);
+  }
+
+  .checklist li:last-child { border-bottom: none; }
+
+  .checklist li::before {
+    content: '✓';
+    position: absolute;
+    left: 0;
+    width: 22px;
+    height: 22px;
+    border: 1px solid var(--gold);
+    color: transparent;
+    font-size: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    top: 15px;
+  }
+
+  /* DAILY ROUTINE */
+  .routine-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 16px;
+    margin: 24px 0;
+  }
+
+  .routine-card {
+    background: var(--panel);
+    border: 1px solid rgba(45,43,39,0.25);
+    padding: 24px 20px;
+    text-align: center;
+  }
+
+  .routine-number {
+    font-family: 'Fraunces', serif;
+    font-size: 42px;
+    font-weight: 300;
+    color: var(--gold);
+    line-height: 1;
+    margin-bottom: 8px;
+  }
+
+  .routine-label {
+    font-size: 12px;
+    color: var(--text-light);
+    font-weight: 300;
+    letter-spacing: 0.05em;
+    line-height: 1.5;
+  }
+
+  /* ROUTINE LEVEL BUTTONS */
+  .routine-level-btn {
+    background: var(--panel);
+    border: 1px solid rgba(45,43,39,0.25);
+    padding: 24px 16px;
+    text-align: center;
+    cursor: pointer;
+    transition: all 0.2s;
+  }
+
+  .routine-level-btn:hover {
+    border-color: var(--gold);
+    background: rgba(45,43,39,0.05);
+    transform: translateY(-2px);
+  }
+
+  .routine-level-btn.active {
+    border-color: var(--gold);
+    background: var(--cream-dark);
+    border-top: 3px solid var(--gold);
+  }
+
+  /* BOOTCAMP LINKS */
+  .bootcamp-list {
+    list-style: none;
+    margin: 16px 0;
+  }
+
+  .bootcamp-list li {
+    margin-bottom: 8px;
+  }
+
+  .bootcamp-list a {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 16px 20px;
+    background: var(--panel);
+    border: 1px solid rgba(45,43,39,0.25);
+    color: var(--text);
+    text-decoration: none;
+    font-size: 14px;
+    transition: all 0.2s;
+  }
+
+  .bootcamp-list a:hover {
+    border-color: var(--gold);
+    background: rgba(45,43,39,0.05);
+    color: var(--gold-dark);
+  }
+
+  .bootcamp-list .night-label {
+    font-size: 11px;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--gold);
+    font-weight: 500;
+    min-width: 60px;
+  }
+
+  /* PASSCODE NOTE */
+  .passcode {
+    font-size: 12px;
+    color: var(--text-light);
+    margin-top: 4px;
+    font-style: italic;
+  }
+
+  /* DIVIDER */
+  .gold-divider {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    margin: 48px 0;
+  }
+
+  .gold-divider::before,
+  .gold-divider::after {
+    content: '';
+    flex: 1;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, var(--gold), transparent);
+  }
+
+  .gold-divider span {
+    color: var(--gold);
+    font-size: 16px;
+  }
+
+  /* FOOTER */
+  .footer {
+    background: var(--text);
+    padding: 40px;
+    text-align: center;
+    margin-top: 80px;
+  }
+
+  .footer p {
+    font-size: 13px;
+    color: rgba(251,249,245,0.4);
+    font-weight: 300;
+    letter-spacing: 0.05em;
+  }
+
+  /* RESPONSIVE */
+  @media (max-width: 860px) {
+    .path-cards { grid-template-columns: 1fr; }
+    .hero { padding: 60px 24px 80px; }
+    .content { padding: 40px 24px; }
+    .back-btn { margin: 24px 24px 0; }
+    .routine-grid { grid-template-columns: repeat(2, 1fr); }
+  }
+</style>
+</head>
+<body>
+
+<!-- PASSWORD GATE -->
+<div id="password-gate">
+  <div class="password-box">
+    <div class="ornament">✦</div>
+    <h2>Your Getting Started Guide</h2>
+    <p>Enter your access password to continue</p>
+    <input type="password" class="password-input" id="password-input" placeholder="Enter password" onkeydown="if(event.key==='Enter') checkPassword()">
+    <button class="password-submit" onclick="checkPassword()">Enter</button>
+    <p class="password-error" id="password-error">Incorrect password. Please try again.</p>
+  </div>
+</div>
+
+<!-- MAIN CONTENT -->
+<div id="main-content">
+<div id="home-content">
+  <div class="hero">
+    <div class="hero-ornament">✦</div>
+    <h1>Your <span>Getting Started</span> Guide</h1>
+    <div class="hero-line"></div>
+    <p>Welcome! I'm so excited you're here. This is your one stop guide for everything you need to get started: whether you're here to book travel, build a team, or both.</p>
+  </div>
+
+  <div class="paths">
+    <div class="section-label">Choose your path</div>
+    <h2>Where would you like to begin?</h2>
+    <div class="path-cards">
+      <a class="path-card" onclick="showSection('travel'); return false;" href="#">
+        <span class="path-icon">✈️</span>
+        <h3>Become a travel agent</h3>
+        <p>Everything you need to get set up, complete your training and start booking travel: in one simple step-by-step guide.</p>
+        <div class="path-arrow">Start here →</div>
+      </a>
+      <a class="path-card" onclick="showSection('business'); return false;" href="#">
+        <span class="path-icon">🚀</span>
+        <h3>Build your team</h3>
+        <p>Learn how to find people, share the opportunity, get paid and grow a team that creates long term residual income.</p>
+        <div class="path-arrow">Start here →</div>
+      </a>
+      <a class="path-card" onclick="showSection('events'); return false;" href="#">
+        <span class="path-icon">📅</span>
+        <h3>Zoom calls & events</h3>
+        <p>Every weekly and monthly call for the UK and Dubai teams, all in one place, so you always know what's coming up.</p>
+        <div class="path-arrow">Start here →</div>
+      </a>
+    </div>
+  </div>
+</div>
+</div><!-- end home-content -->
+
+<!-- TRAVEL PAGE -->
+<div id="travel" class="page-section">
+  <button class="back-btn" onclick="showSection('home')">← Back to home</button>
+
+  <div class="content">
+    <div class="content-header">
+      <div class="section-label">✈️ Travel agent path</div>
+      <h2>Become a travel agent</h2>
+      <p>Everything you need to get set up as a travel agent, in order. Work through each step before moving on to the next.</p>
+    </div>
+
+    <!-- STEP 1 -->
+    <div class="step">
+      <div class="step-number">Step 01</div>
+      <h3>Log in and complete your mandatory training</h3>
+      <p>When you first joined you would have received a welcome email from InteleTravel with your personal login details. Before you do anything else save these somewhere safe: screenshot them into your phone notes or write them down.</p>
+      <p>You'll also need these InteleTravel credentials when registering with partners and suppliers. Save these too: they are NOT to be shared with clients, only with suppliers and partners you book through.</p>
+
+      <div class="credentials">
+        <h4>InteleTravel Credentials</h4>
+        <div class="credential-item">
+          <span class="credential-label">IATA / ARC Number</span>
+          <span class="credential-value">10-548020</span>
+        </div>
+        <div class="credential-item">
+          <span class="credential-label">ABTA Number</span>
+          <span class="credential-value">P7384</span>
+        </div>
+        <div class="credential-item">
+          <span class="credential-label">CLIA Number</span>
+          <span class="credential-value">00323643</span>
+        </div>
+        <div class="credential-item">
+          <span class="credential-label">VAT Number</span>
+          <span class="credential-value">305285518</span>
+        </div>
+        <div class="credential-item">
+          <span class="credential-label">UK Address</span>
+          <span class="credential-value">25 Cabot Square, Canary Wharf, London E14 4QZ</span>
+        </div>
+      </div>
+
+      <p style="margin-top: 24px; font-size: 14px; color: var(--text-light); font-weight: 500;">Mandatory training: select your country:</p>
+
+      <div class="toggle">
+        <div class="toggle-header" onclick="toggleBlock(this)">
+          <span class="toggle-icon">▶</span>
+          <span class="toggle-title">🇬🇧 UK: InteleTravel Regulatory Training</span>
+        </div>
+        <div class="toggle-body">
+          <p>Sign into your InteleTravel back office, hover over the Education tab and select "Required UK Regulatory Training". Work through the modules and complete the multiple choice questions at the end.</p>
+          <p><strong>Note:</strong> Once you finish the initial mandatory modules your progress bar will show 10%. The rest are optional: for extra knowledge and partner specialisations like Dream Maker status.</p>
+        </div>
+      </div>
+
+      <div class="toggle">
+        <div class="toggle-header" onclick="toggleBlock(this)">
+          <span class="toggle-icon">▶</span>
+          <span class="toggle-title">🇦🇪 UAE: InteleTravel Regulatory Training</span>
+        </div>
+        <div class="toggle-body">
+          <p>Sign into your InteleTravel back office, hover over the Education tab, then scroll down to Regulatory Training. Complete the training.</p>
+        </div>
+      </div>
+
+      <div class="toggle">
+        <div class="toggle-header" onclick="toggleBlock(this)">
+          <span class="toggle-icon">▶</span>
+          <span class="toggle-title">🇬🇧 UK: ABTA Training</span>
+        </div>
+        <div class="toggle-body">
+          <p>Go to abtaknowledgezone.com/login and register as a new user. Fill in your details exactly as follows:</p>
+          <ul class="bullet-list" style="margin-top: 12px;">
+            <li>Email address: your personal email</li>
+            <li>Name: the name you registered with InteleTravel</li>
+            <li>Company name: InteleTravel</li>
+            <li>City/postcode: London, E14 5EN</li>
+            <li>Telephone: your personal number (not InteleTravel's)</li>
+            <li>Job title: Travel Agent</li>
+            <li>Type of business: Online Travel Agent</li>
+            <li>I am a homeworker: Yes</li>
+            <li>IATA: Yes</li>
+            <li>ABTA: Yes (P7384)</li>
+          </ul>
+          <p style="margin-top: 16px;">Submit and wait for approval: check your junk and spam folders. Once approved, log back in and complete the "All About ABTA" training: 5 modules covering Travel with Confidence, About ABTA, ABTA Code of Conduct, Financial Fitness and Protection, and Working with the Industry.</p>
+        </div>
+      </div>
+
+      <div class="toggle">
+        <div class="toggle-header" onclick="toggleBlock(this)">
+          <span class="toggle-icon">▶</span>
+          <span class="toggle-title">🇮🇪 Ireland: Mandatory Training</span>
+        </div>
+        <div class="toggle-body">
+          <p>Sign into your InteleTravel back office, hover over the Education tab and select "Required Regulatory Training". Work through all modules and complete the multiple choice questions. Then return to the Education tab and complete InteleTravel University.</p>
+        </div>
+      </div>
+
+      <div class="toggle">
+        <div class="toggle-header" onclick="toggleBlock(this)">
+          <span class="toggle-icon">▶</span>
+          <span class="toggle-title">🇺🇸 USA / Caribbean: Mandatory Training</span>
+        </div>
+        <div class="toggle-body">
+          <p>Sign into your InteleTravel back office, hover over the Education tab and select "InteleTravel University". Work through all modules and complete the multiple choice questions at the end.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- STEP 2 -->
+    <div class="step">
+      <div class="step-number">Step 02</div>
+      <h3>Booking travel</h3>
+      <p>As a travel agent you have multiple ways to search and book travel. Don't feel like you need to master all of them straight away, start with one or two and build from there.</p>
+
+      <div class="callout">
+        <p><strong>Important booking reminder:</strong> You will learn this in your training but please remember: anything booked outside of the InteleTravel platform, whether it's with a partner or a hotel direct, that is commissionable, must be registered in your back office immediately.</p>
+      </div>
+
+      <div class="toggle">
+        <div class="toggle-header" onclick="toggleBlock(this)">
+          <span class="toggle-icon">▶</span>
+          <span class="toggle-title">Your agent rate spreadsheet</span>
+        </div>
+        <div class="toggle-body">
+          <p>One of the biggest perks of being a travel agent is access to heavily discounted personal travel rates at hundreds of hotels worldwide: up to 80% off at some properties. These rates are for you, your friends and family.</p>
+          <p>The spreadsheet has two tabs: Hotels (every partner with the discount, how to register and which destinations are covered) and Search by Destination (find which partners cover a specific country instantly).</p>
+          <p style="margin-top: 12px;">Below is a spreadsheet of hotels that also offer agent discounts. There are many listed and you can pick which ones you prefer. For now I'd suggest Melia, Jumeirah Hotels and Staff Travel Voyage.</p>
+          <a href="https://docs.google.com/spreadsheets/d/1-tnQyDKuk3W1ekib-BIlNWgBFGNtHj4l/edit?usp=drive_link&ouid=115337698256883872172&rtpof=true&sd=true" target="_blank" class="link-btn" style="margin-top: 12px; display: inline-flex;">Download spreadsheet →</a>
+        </div>
+      </div>
+
+      <div class="toggle">
+        <div class="toggle-header" onclick="toggleBlock(this)">
+          <span class="toggle-icon">▶</span>
+          <span class="toggle-title">Staff Travel Voyage (STV)</span>
+        </div>
+        <div class="toggle-body">
+          <p>A dedicated platform for travel agents with discounted personal travel rates worldwide.</p>
+          <a href="https://stafftravel.voyage/register/" target="_blank" class="link-btn" style="margin-top: 12px; display: inline-flex;">Register with STV →</a>
+        </div>
+      </div>
+
+      <div class="toggle">
+        <div class="toggle-header" onclick="toggleBlock(this)">
+          <span class="toggle-icon">▶</span>
+          <span class="toggle-title">InteleTravel back office: preferred partners</span>
+        </div>
+        <div class="toggle-body">
+          <p>Log into your back office and head to the preferred partners section. Browse and register with any that suit what you want to specialise in — just pick the ones you want to register with.</p>
+        </div>
+      </div>
+
+      <div class="toggle">
+        <div class="toggle-header" onclick="toggleBlock(this)">
+          <span class="toggle-icon">▶</span>
+          <span class="toggle-title">Booking direct with hotels</span>
+        </div>
+        <div class="toggle-body">
+          <p>You can approach hotels directly to book at commissionable rates: but there is a process that must be followed. This is not the same as booking through a comparison site like Skyscanner or Booking.com.</p>
+          <ul class="bullet-list" style="margin-top: 12px;">
+            <li>Identify yourself as an InteleTravel agent</li>
+            <li>Provide InteleTravel's IATA number: 10-548020</li>
+            <li>Ask for a commissionable rate</li>
+            <li>Get written confirmation of the commission percentage</li>
+            <li>Collect all information to pass to your client</li>
+            <li>Take payment directly (ensure client has completed a payment authorisation form)</li>
+            <li>Register the booking in your InteleTravel system</li>
+            <li>Once travel is complete, submit a ticket in InteleTravel Hub: ticket type: Invoice Request Bookings</li>
+          </ul>
+          <p style="margin-top: 20px; font-weight: 500; color: var(--text);">Email template: requesting a commissionable rate:</p>
+          <div class="email-template">
+            Hi [Hotel Name],<br><br>
+            My name is [Your Name] and I am an Independent Travel Agent with InteleTravel. Our IATA number is 10-548020.<br><br>
+            Please could you provide me with your best commissionable rate for [number of guests] arriving on [date] for [number of nights] on [board basis] and confirm the commission percentage attached to this rate.<br><br>
+            Thank you so much in advance. I look forward to hearing from you.<br><br>
+            [Your professional signature]
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- STEP 3 -->
+    <div class="step">
+      <div class="step-number">Step 03</div>
+      <h3>Important UK booking rules</h3>
+      <div class="warning">
+        <p><strong>Please read this carefully before you start booking for clients.</strong></p>
+        <p style="margin-top: 12px;">As a UK travel agent registered under InteleTravel's UK licence, you can only book travel for clients who live and work in the UK. You cannot book for UK citizens living abroad, even if they have a UK address or passport. This is a compliance rule: not a guideline. When in doubt, ask before you book.</p>
+      </div>
+    </div>
+
+    <!-- USEFUL DOCUMENTS -->
+    <div class="step">
+      <div class="step-number">Documents</div>
+      <h3>Travel booking useful documents</h3>
+      <p>Download and save these to your phone — they are incredibly useful references when booking for clients.</p>
+
+      <ul class="bootcamp-list" style="margin-top: 20px;">
+        <li>
+          <a href="https://drive.google.com/file/d/1LM1GqXFdciupv8JKJh4a_9Cvji-zpk7v/view?usp=drive_link" target="_blank" class="link-btn link-btn-outline" style="display: flex; align-items: center; gap: 12px; text-decoration: none; margin-bottom: 8px;">
+            <span style="font-size: 20px;">📋</span>
+            <span>Booking for Clients flowchart — which supplier to use for every booking type</span>
+          </a>
+        </li>
+        <li>
+          <a href="https://drive.google.com/file/d/1yGiD-WM_URNyCPAgaRfWTm478Jq5nM6f/view?usp=drive_link" target="_blank" class="link-btn link-btn-outline" style="display: flex; align-items: center; gap: 12px; text-decoration: none; margin-bottom: 8px;">
+            <span style="font-size: 20px;">📝</span>
+            <span>Booking Process guide — qualifying clients, sending quotes, paperwork and MOR explained</span>
+          </a>
+        </li>
+        <li>
+          <a href="https://drive.google.com/file/d/1xResxUfinm0vz4kZcko_cFDA1THpcQ1g/view?usp=drive_link" target="_blank" class="link-btn link-btn-outline" style="display: flex; align-items: center; gap: 12px; text-decoration: none;">
+            <span style="font-size: 20px;">🌍</span>
+            <span>Preferred Partners by Country — which suppliers to use for every country in the world</span>
+          </a>
+        </li>
+      </ul>
+    </div>
+
+    <!-- ONGOING RESOURCES -->
+    <div class="step">
+      <div class="step-number">Resources</div>
+      <h3>Your ongoing resource hub</h3>
+      <p>Once you're set up, the Boards app has everything you need for deeper learning: compliance guidance, supplier details, marketing support, AI tools and regular travel calls and bootcamps.</p>
+      <a href="https://app.boards.com/WMz2EIFwsqbrOOfPRmb8eVoYpfq1-1u2qOrxKsimTInGXUVATEFqM6mZ$/1u2qOrxKsimTInGXUVATEFqM6mZ~" target="_blank" class="link-btn link-btn-outline" style="margin-top: 16px; display: inline-flex;">Access the Boards app →</a>
+    </div>
+
+  </div>
+</div>
+
+<!-- BUSINESS PAGE -->
+<div id="business" class="page-section">
+  <button class="back-btn" onclick="showSection('home')">← Back to home</button>
+
+  <div class="content">
+    <div class="content-header">
+      <div class="section-label">🚀 Business building path</div>
+      <h2>Build your team</h2>
+      <p>Welcome to the best part. This is where the real magic happens. Watch my welcome video before you do anything else.</p>
+    </div>
+
+    <!-- TWO BUSINESSES -->
+    <div class="step">
+      <div class="step-number">The basics</div>
+      <h3>The two sides of the business</h3>
+      <p>You have two businesses working together: InteleTravel for booking travel and earning commission, and PlanNet Marketing for sharing the opportunity and building residual income. You don't have to choose between them.</p>
+
+      <div class="credentials" style="margin-top: 24px;">
+        <h4>Where you get paid</h4>
+        <div class="credential-item">
+          <span class="credential-label">Paylution</span>
+          <span class="credential-value" style="font-weight: 300; font-size: 13px;">This is where you get paid for referrals through PlanNet Marketing</span>
+        </div>
+        <div class="credential-item">
+          <span class="credential-label">Hyperwallet</span>
+          <span class="credential-value" style="font-weight: 300; font-size: 13px;">This is where you get paid for your InteleTravel travel bookings</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- HOW YOU GET PAID -->
+    <div class="step">
+      <div class="step-number">Income</div>
+      <h3>How you get paid</h3>
+      <p>Watch Taryn and André explain the full compensation plan:</p>
+      <a href="https://vimeo.com/1010299076" target="_blank" class="link-btn" style="margin: 16px 0; display: inline-flex;">Watch compensation plan video →</a>
+      <p style="margin-top: 16px;">Download the full compensation plan document:</p>
+      <a href="#" class="link-btn link-btn-outline" style="margin-top: 8px; display: inline-flex;">Download compensation plan →</a>
+    </div>
+
+    <!-- OPEN MARKETS -->
+    <div class="step">
+      <div class="step-number">Compliance</div>
+      <h3>Who you can sign up</h3>
+      <p>You can only sign people up who live in an open market country. Always check before you have the conversation.</p>
+      <div class="toggle" style="margin-top: 20px;">
+        <div class="toggle-header" onclick="toggleBlock(this)">
+          <span class="toggle-icon">▶</span>
+          <span class="toggle-title">View all open market countries</span>
+        </div>
+        <div class="toggle-body">
+          <p>United States, United Kingdom, Republic of Ireland, American Samoa, Anguilla, Bahamas, Barbados, Belize, Bermuda, British Virgin Islands, Cayman Islands, Dominican Republic, French Guiana, French Polynesia, French Southern and Antarctic Lands, Guadeloupe, Guam, Jamaica, Martinique, Mayotte, New Caledonia, Panama, Reunion, Saint Kitts and Nevis, Saint Barthelemy, Saint Martin, Saint Pierre and Miquelon, Trinidad and Tobago, Turks and Caicos Islands, US Virgin Islands, Wallis and Futuna.</p>
+          <a href="#" class="link-btn link-btn-outline" style="margin-top: 16px; display: inline-flex;">Download full open markets PDF →</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- FINDING PEOPLE -->
+    <div class="step">
+      <div class="step-number">Prospecting</div>
+      <h3>How to find people</h3>
+      <p>Your ideal person is you: someone who loves travel, wants flexibility, or is open to extra income. Keep that in mind with every conversation.</p>
+      <p style="margin-top: 12px;">Watch my prospecting video for the full breakdown:</p>
+      <a href="#" class="link-btn link-btn-outline" style="margin: 12px 0; display: inline-flex;">Watch prospecting video: coming soon</a>
+
+      <div class="toggle" style="margin-top: 20px;">
+        <div class="toggle-header" onclick="toggleBlock(this)">
+          <span class="toggle-icon">▶</span>
+          <span class="toggle-title">Offline prospecting</span>
+        </div>
+        <div class="toggle-body">
+          <p>Start with your warm market: friends, family, colleagues, gym friends. Then networking events, local markets, business meetups, and chatting to people who offer you a service. Business cards and flyers work well if you're out regularly.</p>
+        </div>
+      </div>
+
+      <div class="toggle">
+        <div class="toggle-header" onclick="toggleBlock(this)">
+          <span class="toggle-icon">▶</span>
+          <span class="toggle-title">Online prospecting: Instagram</span>
+        </div>
+        <div class="toggle-body">
+          <p>Instagram is your biggest tool. Be consistent, show up daily and niche down your search. Think about where your ideal person hangs out online: travel accounts, lifestyle bloggers, local restaurant pages, corporate job hashtags, mum communities.</p>
+          <p style="margin-top: 12px;">Watch my Instagram network expansion video for a full step by step walkthrough:</p>
+          <a href="#" class="link-btn link-btn-outline" style="margin-top: 12px; display: inline-flex;">Watch Instagram video: coming soon</a>
+        </div>
+      </div>
+
+      <div class="toggle">
+        <div class="toggle-header" onclick="toggleBlock(this)">
+          <span class="toggle-icon">▶</span>
+          <span class="toggle-title">Attraction marketing</span>
+        </div>
+        <div class="toggle-body">
+          <p>People buy you before they buy the business. Your social media needs to show who you are, not just what you do.</p>
+          <ul class="bullet-list" style="margin-top: 12px;">
+            <li>Document don't create: show your journey as it happens</li>
+            <li>Share your story and why you started</li>
+            <li>Show lifestyle content alongside business content</li>
+            <li>Be consistent: showing up matters more than being perfect</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <!-- DAILY ROUTINE -->
+    <div class="step">
+      <div class="step-number">Daily habits</div>
+      <h3>Your daily prospecting routine</h3>
+      <p>Pick the level that matches your life right now. Whatever you choose, do it every single day. Track it. Consistency compounds.</p>
+
+      <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; margin: 28px 0;">
+        <div class="routine-level-btn" onclick="showRoutine('one-hour')" id="btn-one-hour">
+          <div style="font-size: 24px; margin-bottom: 10px;">⏱️</div>
+          <div style="font-family: 'Fraunces', serif; font-size: 18px; font-weight: 500; color: var(--text); margin-bottom: 6px;">1 Hour</div>
+          <div style="font-size: 12px; color: var(--text-light); font-weight: 300; line-height: 1.5;">I only have one hour a day to put into my business</div>
+        </div>
+        <div class="routine-level-btn" onclick="showRoutine('two-hours')" id="btn-two-hours">
+          <div style="font-size: 24px; margin-bottom: 10px;">🔥</div>
+          <div style="font-family: 'Fraunces', serif; font-size: 18px; font-weight: 500; color: var(--text); margin-bottom: 6px;">2-3 Hours</div>
+          <div style="font-size: 12px; color: var(--text-light); font-weight: 300; line-height: 1.5;">I have a few hours a day and I'm building momentum</div>
+        </div>
+        <div class="routine-level-btn" onclick="showRoutine('all-in')" id="btn-all-in">
+          <div style="font-size: 24px; margin-bottom: 10px;">🚀</div>
+          <div style="font-family: 'Fraunces', serif; font-size: 18px; font-weight: 500; color: var(--text); margin-bottom: 6px;">All In</div>
+          <div style="font-size: 12px; color: var(--text-light); font-weight: 300; line-height: 1.5;">I'm going all in and ready to go as hard as possible</div>
+        </div>
+      </div>
+
+      <!-- ONE HOUR ROUTINE -->
+      <div id="routine-one-hour" class="routine-panel" style="display:none;">
+        <div class="callout" style="margin-bottom: 20px;">
+          <p><strong>1 hour a day:</strong> Start small, stay consistent. These numbers are totally achievable in an hour and will build real momentum over time.</p>
+        </div>
+        <div class="routine-grid">
+          <div class="routine-card">
+            <div class="routine-number">10-15</div>
+            <div class="routine-label">New reach outs</div>
+          </div>
+          <div class="routine-card">
+            <div class="routine-number">3-5</div>
+            <div class="routine-label">New conversations started</div>
+          </div>
+          <div class="routine-card">
+            <div class="routine-number">2-3</div>
+            <div class="routine-label">Follow ups</div>
+          </div>
+          <div class="routine-card">
+            <div class="routine-number">1</div>
+            <div class="routine-label">Value post or story</div>
+          </div>
+          <div class="routine-card">
+            <div class="routine-number">2-3</div>
+            <div class="routine-label">Stories, polls or question boxes</div>
+          </div>
+          <div class="routine-card">
+            <div class="routine-number">10</div>
+            <div class="routine-label">Minutes engaging with others' content</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- TWO HOURS ROUTINE -->
+      <div id="routine-two-hours" class="routine-panel" style="display:none;">
+        <div class="callout" style="margin-bottom: 20px;">
+          <p><strong>2-3 hours a day:</strong> You're serious about this. These numbers will start to create real results and build your confidence fast.</p>
+        </div>
+        <div class="routine-grid">
+          <div class="routine-card">
+            <div class="routine-number">40-60</div>
+            <div class="routine-label">New reach outs</div>
+          </div>
+          <div class="routine-card">
+            <div class="routine-number">5-8</div>
+            <div class="routine-label">New conversations started</div>
+          </div>
+          <div class="routine-card">
+            <div class="routine-number">3-5</div>
+            <div class="routine-label">Follow ups</div>
+          </div>
+          <div class="routine-card">
+            <div class="routine-number">1</div>
+            <div class="routine-label">Value post</div>
+          </div>
+          <div class="routine-card">
+            <div class="routine-number">3-5</div>
+            <div class="routine-label">Stories, polls or question boxes</div>
+          </div>
+          <div class="routine-card">
+            <div class="routine-number">15</div>
+            <div class="routine-label">Minutes engaging with others' content</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- ALL IN ROUTINE -->
+      <div id="routine-all-in" class="routine-panel" style="display:none;">
+        <div class="callout" style="margin-bottom: 20px;">
+          <p><strong>All in:</strong> This is where the magic happens. These numbers compounded daily will change your life. Track everything.</p>
+        </div>
+        <div class="routine-grid">
+          <div class="routine-card">
+            <div class="routine-number">100</div>
+            <div class="routine-label">New reach outs</div>
+          </div>
+          <div class="routine-card">
+            <div class="routine-number">10</div>
+            <div class="routine-label">New conversations started</div>
+          </div>
+          <div class="routine-card">
+            <div class="routine-number">5</div>
+            <div class="routine-label">Follow ups</div>
+          </div>
+          <div class="routine-card">
+            <div class="routine-number">1</div>
+            <div class="routine-label">Value post</div>
+          </div>
+          <div class="routine-card">
+            <div class="routine-number">5</div>
+            <div class="routine-label">Stories, polls or question boxes</div>
+          </div>
+          <div class="routine-card">
+            <div class="routine-number">15</div>
+            <div class="routine-label">Minutes engaging with others' content</div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- MESSAGE TEMPLATES -->
+    <div class="step">
+      <div class="step-number">Templates</div>
+      <h3>Message templates</h3>
+      <p>These are starting points: always personalise them to sound like you. A message that feels personal will always outperform a copy and paste.</p>
+
+      <div class="toggle" style="margin-top: 20px;">
+        <div class="toggle-header" onclick="toggleBlock(this)">
+          <span class="toggle-icon">▶</span>
+          <span class="toggle-title">Someone you know</span>
+        </div>
+        <div class="toggle-body">
+          <div class="email-template">Hey, hope you're well! I'm just messaging as I've just started my own business in travel and it really made me think of you because I know how much you love to go away and I think it is something that would massively benefit you. Let me know if you're free at some point this week for a catch up and I can explain in a bit more detail how this works and the opportunity for you too. Xxx</div>
+        </div>
+      </div>
+
+      <div class="toggle">
+        <div class="toggle-header" onclick="toggleBlock(this)">
+          <span class="toggle-icon">▶</span>
+          <span class="toggle-title">Someone who liked your post</span>
+        </div>
+        <div class="toggle-body">
+          <div class="email-template">Hey lovely! I just saw you liked my post about what I do and how I earn from travel remotely. Were you interested in finding out more information on how you can get involved? Let me know and we can discuss further as I think you would benefit massively from this!</div>
+        </div>
+      </div>
+
+      <div class="toggle">
+        <div class="toggle-header" onclick="toggleBlock(this)">
+          <span class="toggle-icon">▶</span>
+          <span class="toggle-title">Someone who follows you</span>
+        </div>
+        <div class="toggle-body">
+          <div class="email-template">Hey lovely, just seen your follow! I've followed you back. Have you seen what my page is all about? If you are interested in finding out how you can start earning a passive income remotely from travel, earn a second or full time income, travel more: let me know and I can send you over some more information.</div>
+        </div>
+      </div>
+
+      <div class="toggle">
+        <div class="toggle-header" onclick="toggleBlock(this)">
+          <span class="toggle-icon">▶</span>
+          <span class="toggle-title">Personalised approach</span>
+        </div>
+        <div class="toggle-body">
+          <div class="email-template">Hey [name], I see that you [something specific] and I love how [genuine observation], so I thought I would reach out and ask if you have ever thought about [relevant angle] as I think this would massively benefit you. Would you like me to pop over some more information so you can see if this is something you may be interested in?</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- TRAINING -->
+    <div class="step">
+      <div class="step-number">Training</div>
+      <h3>Your training: start here</h3>
+
+      <p style="font-weight: 500; color: var(--text); margin-bottom: 16px;">GET 1 and RUN bootcamp <span style="font-weight: 300; color: var(--text-light); font-size: 13px;">brand new to the business, 0 to Bronze</span></p>
+      <p style="margin-bottom: 16px;">If you have fewer than 4 personal sign ups, start here. Watch each night in order before moving on.</p>
+
+      <ul class="bootcamp-list">
+        <li><a href="https://buildersbootcamp.s3.eu-north-1.amazonaws.com/GMT20260209-203645_Recording_1280x720.mp4" target="_blank"><span class="night-label">Night 1</span> Watch recording →</a></li>
+        <li><a href="https://buildersbootcamp.s3.eu-north-1.amazonaws.com/GMT20260210-203927_Recording_1280x720.mp4" target="_blank"><span class="night-label">Night 2</span> Watch recording →</a></li>
+        <li><a href="https://buildersbootcamp.s3.eu-north-1.amazonaws.com/GMT20260211-203211_Recording_1280x720.mp4" target="_blank"><span class="night-label">Night 3</span> Watch recording →</a></li>
+        <li><a href="https://buildersbootcamp.s3.eu-north-1.amazonaws.com/GMT20260212-203813_Recording_1280x720.mp4" target="_blank"><span class="night-label">Night 4</span> Watch recording →</a></li>
+        <li><a href="https://buildersbootcamp.s3.eu-north-1.amazonaws.com/GMT20260213-203317_Recording_1280x720.mp4" target="_blank"><span class="night-label">Night 5</span> Watch recording →</a></li>
+      </ul>
+
+      <div class="gold-divider"><span>✦</span></div>
+
+      <p style="font-weight: 500; color: var(--text); margin-bottom: 16px;">Builders bootcamp <span style="font-weight: 300; color: var(--text-light); font-size: 13px;">Bronze and above, 4 or more personal sign ups</span></p>
+      <p style="margin-bottom: 16px;">Faster paced. Only come here once you have completed GET 1 and RUN.</p>
+
+      <ul class="bootcamp-list">
+        <li>
+          <a href="https://us02web.zoom.us/rec/share/teCH5i2Op91HVp7gWk_WfmGCWdzb8LiJdPMYoM6C8IVp133XEL60XIKiq5K-hfeq.FzzvVrmXeBbbZtc2" target="_blank"><span class="night-label">Week 1</span> Watch recording →</a>
+          <div class="passcode" style="padding-left: 20px;">Passcode: Ef0yGHn+</div>
+        </li>
+        <li>
+          <a href="https://us02web.zoom.us/rec/share/wP66bA-eys0yNTUMbg0g4oA6z3FhlJAlhzAV4TzrM9wSujM7rsRBLpXU-GlzYFcw.vUMbyZsiisBf8RBu" target="_blank"><span class="night-label">Week 2</span> Watch recording →</a>
+          <div class="passcode" style="padding-left: 20px;">Passcode: =.Qu+AQ5</div>
+        </li>
+        <li>
+          <a href="https://us02web.zoom.us/rec/share/y5stfLF77g6p1q4mjkHAbyAO1FhX0Lg-nMEF04ZaiT5lGLNVgW0-tfglB9mEJvbD.kJpNVygaT8pZhLxF" target="_blank"><span class="night-label">Week 3</span> Watch recording →</a>
+          <div class="passcode" style="padding-left: 20px;">Passcode: mP!t72AR</div>
+        </li>
+        <li>
+          <a href="https://us02web.zoom.us/rec/share/3vTFm72mMZhLPrFX0o70XhVYEO_stD3jrn1OICZoq7swo235VYUQaWF4eXv6ceY.6QJ0IA_P9GwQwsEL" target="_blank"><span class="night-label">Week 4</span> Watch recording →</a>
+          <div class="passcode" style="padding-left: 20px;">Passcode: UCe0wqh%</div>
+        </li>
+        <li>
+          <a href="https://us02web.zoom.us/rec/share/pbFg3yeZ3Lke_xk2KHJ860mJlW_A3ysLWYOfy7O2UcVs5ylqkUHuNuKuw2irw-9y.t69TO30xXXJdXPfU" target="_blank"><span class="night-label">Closing</span> Closing call with Leah Lockett →</a>
+          <div class="passcode" style="padding-left: 20px;">Passcode: siCzyD2%</div>
+        </li>
+      </ul>
+    </div>
+
+    <!-- SOCIAL MEDIA TEMPLATES -->
+    <div class="step">
+      <div class="step-number">Social media</div>
+      <h3>Your social media templates</h3>
+      <p>Download these and save them in an album on your phone so they're ready to go the moment you need them.</p>
+      <a href="#" class="link-btn" style="margin: 16px 0; display: inline-flex;">Download Canva templates →</a>
+      <ul class="bullet-list" style="margin-top: 8px;">
+        <li>Welcome to the Team: when someone new joins your team</li>
+        <li>Congratulations: for milestones and shoutouts</li>
+        <li>Rank Up Bronze Builder</li>
+        <li>Rank Up Silver Builder</li>
+        <li>Rank Up Gold Builder</li>
+      </ul>
+    </div>
+
+    <!-- TEAM ZOOMS -->
+    <div class="step">
+      <div class="step-number">Team Zooms</div>
+      <h3>Team Zooms: training replays</h3>
+      <p>Recordings from our team Zoom calls, covering social media growth, personal branding and more. Check back here as new sessions are added.</p>
+
+      <ul class="bootcamp-list" style="margin-top: 20px;">
+        <li>
+          <a href="https://us06web.zoom.us/media/share/73617430-B3EA-42FE-9EC0-17BF43997C1C?module=recording&amp;product=video-center" target="_blank"><span class="night-label">Team Zoom</span> Growing Your Business with Social Media →</a>
+          <p style="padding-left: 20px; font-size: 13px; color: var(--text-light); margin-top: 4px; margin-bottom: 0;">Learn how to build your personal brand and grow your team using social media, straight from our team training call.</p>
+          <div class="passcode" style="padding-left: 20px;">Passcode: 7#6k7%Kw</div>
+        </li>
+      </ul>
+    </div>
+
+    <!-- NEW MEMBER CHECKLIST -->
+    <div class="step">
+      <div class="step-number">Checklist</div>
+      <h3>When someone says yes: your new member checklist</h3>
+      <p>Do this immediately when someone joins your team. A well onboarded team member is far more likely to get started quickly and stay.</p>
+      <ol class="numbered-list" style="margin-top: 20px;">
+        <li>Make sure they have received their welcome emails from Planet and Intele</li>
+        <li>Send them the link to this portal</li>
+        <li>Post a story welcoming them: tag them, your upline/Director and @thejetsetformula</li>
+        <li>Add them to the relevant team chats: don't overwhelm them with too many to begin with</li>
+        <li>Book their onboarding call for one week later</li>
+      </ol>
+    </div>
+
+  </div>
+</div>
+
+<!-- EVENTS PAGE -->
+<div id="events" class="page-section">
+  <button class="back-btn" onclick="showSection('home')">← Back to home</button>
+
+  <div class="content">
+    <div class="content-header">
+      <div class="section-label">📅 Zoom calls & events</div>
+      <h2>Everything on the calendar</h2>
+      <p>All regular team calls in one place. Times are shown in UK and Dubai so there's never any confusion.</p>
+    </div>
+
+    <!-- TEAM ZOOM CALLS -->
+    <div class="step">
+      <div class="step-number">Team Zoom</div>
+      <h3>Team Zoom calls</h3>
+      <p>Everyone joins these together, UK and Dubai.</p>
+
+      <ul class="bootcamp-list" style="margin-top: 20px;">
+        <li>
+          <a href="https://us06web.zoom.us/j/88228212288" target="_blank"><span class="night-label">Weekly</span> Team Builders Zoom — Join call →</a>
+          <p style="padding-left: 20px; font-size: 13px; color: var(--text-light); margin-top: 4px; margin-bottom: 0;">Every Monday, 5pm UK / 8pm Dubai</p>
+        </li>
+        <li>
+          <a href="https://us06web.zoom.us/j/81771430709" target="_blank"><span class="night-label">Monthly</span> Team New Starter Call — Join call →</a>
+          <p style="padding-left: 20px; font-size: 13px; color: var(--text-light); margin-top: 4px; margin-bottom: 0;">24th of every month, 5pm UK / 8pm Dubai</p>
+        </li>
+      </ul>
+    </div>
+
+    <!-- EVENTS BY REGION -->
+    <div class="step">
+      <div class="step-number">Events by region</div>
+      <h3>Events by region</h3>
+      <p>Choose your team to see calls just for you.</p>
+
+      <div style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 16px; margin: 28px 0;">
+        <div class="routine-level-btn active" onclick="showRegion('uk')" id="btn-region-uk">
+          <div style="font-size: 24px; margin-bottom: 10px;">🇬🇧</div>
+          <div style="font-family: 'Fraunces', serif; font-size: 18px; font-weight: 500; color: var(--text);">UK team</div>
+        </div>
+        <div class="routine-level-btn" onclick="showRegion('dubai')" id="btn-region-dubai">
+          <div style="font-size: 24px; margin-bottom: 10px;">🇦🇪</div>
+          <div style="font-family: 'Fraunces', serif; font-size: 18px; font-weight: 500; color: var(--text);">Dubai team</div>
+        </div>
+      </div>
+
+      <div id="region-uk" class="routine-panel">
+        <div class="callout" style="text-align: left;">
+          <p>No upcoming UK events on the calendar right now — check back soon or ask in the team chat.</p>
+        </div>
+      </div>
+
+      <div id="region-dubai" class="routine-panel" style="display:none;">
+        <div class="callout" style="text-align: left;">
+          <p><strong>Queens of the Sunset Pilates</strong> <span style="font-size: 12px; color: var(--text-light);">(team only)</span></p>
+          <p style="margin-top: 6px;">Friday 25th September, 5:30pm — African Queen, J1 Beach</p>
+          <p style="margin-top: 6px;"><a href="https://www.eventbrite.ie/e/queens-of-the-sunset-pilates-at-african-queen-tickets-1997450771026?aff=oddtdtcreator" target="_blank">Get tickets on Eventbrite →</a></p>
+        </div>
+        <div class="callout" style="text-align: left; margin-top: 16px;">
+          <p><strong>Coffee Morning</strong> <span style="font-size: 12px; color: var(--text-light);">(all welcome)</span></p>
+          <p style="margin-top: 6px;">Tuesday 6th October, 10am–12pm — Location TBC</p>
+        </div>
+        <div class="callout" style="text-align: left; margin-top: 16px;">
+          <p><strong>Women in Business</strong></p>
+          <p style="margin-top: 6px;">Sunday 18th October, 10am–12pm — Location TBC</p>
+        </div>
+        <div class="callout" style="text-align: left; margin-top: 16px;">
+          <p><strong>Kite Beach Walk</strong></p>
+          <p style="margin-top: 6px;">Tuesday 3rd November, 8am — Kite Beach, Dubai</p>
+        </div>
+        <div class="callout" style="text-align: left; margin-top: 16px;">
+          <p><strong>Coffee Morning</strong> <span style="font-size: 12px; color: var(--text-light);">(all welcome)</span></p>
+          <p style="margin-top: 6px;">Saturday 28th November — Time and location TBC</p>
+        </div>
+        <div class="callout" style="text-align: left; margin-top: 16px;">
+          <p><strong>Pizza & Prosecco</strong></p>
+          <p style="margin-top: 6px;">Thursday 3rd December, 7pm onwards — Location TBC</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="callout">
+      <p>Check the team chat for the latest events, bootcamps and live calls: these are updated regularly and are worth showing up to.</p>
+    </div>
+
+  </div>
+</div>
+
+<div class="footer">
+  <p>Your Getting Started Guide &nbsp;✦&nbsp; Built with love for your team</p>
+</div>
+
+</div><!-- end main-content -->
+
+<script>
+  function showRoutine(level) {
+    document.querySelectorAll('.routine-panel').forEach(p => p.style.display = 'none');
+    document.querySelectorAll('.routine-level-btn').forEach(b => b.classList.remove('active'));
+    document.getElementById('routine-' + level).style.display = 'block';
+    document.getElementById('btn-' + level).classList.add('active');
+  }
+
+  function showRegion(region) {
+    document.getElementById('region-uk').style.display = 'none';
+    document.getElementById('region-dubai').style.display = 'none';
+    document.getElementById('btn-region-uk').classList.remove('active');
+    document.getElementById('btn-region-dubai').classList.remove('active');
+    document.getElementById('region-' + region).style.display = 'block';
+    document.getElementById('btn-region-' + region).classList.add('active');
+  }
+
+  function checkPassword() {
+    const input = document.getElementById('password-input').value;
+    const error = document.getElementById('password-error');
+    if (input === 'moremoney2026') {
+      document.getElementById('password-gate').style.display = 'none';
+      document.getElementById('main-content').style.display = 'block';
+      sessionStorage.setItem('auth', 'true');
+    } else {
+      error.style.display = 'block';
+      document.getElementById('password-input').value = '';
+    }
+  }
+
+  function showSection(id) {
+    document.getElementById('home-content').style.display = 'none';
+    document.querySelectorAll('.page-section').forEach(s => s.classList.remove('active'));
+    if (id === 'home') {
+      document.getElementById('home-content').style.display = 'block';
+      window.scrollTo(0, 0);
+    } else {
+      document.getElementById(id).classList.add('active');
+      window.scrollTo(0, 0);
+    }
+  }
+
+  function toggleBlock(header) {
+    header.classList.toggle('open');
+    const body = header.nextElementSibling;
+    body.classList.toggle('open');
+  }
+
+  if (sessionStorage.getItem('auth') === 'true') {
+    document.getElementById('password-gate').style.display = 'none';
+    document.getElementById('main-content').style.display = 'block';
+  }
+</script>
+</body>
+</html>
